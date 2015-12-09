@@ -17,10 +17,6 @@
       "description": "Admin Password",
       "value": ""
     },
-    "domain_name": {
-      "description": "[HEROKU APP NAME].herokuapp.com",
-      "value": ""
-    },
     "stripe_api_key": {
       "description": "Stripe API Key",
       "value": ""
