@@ -1,6 +1,6 @@
 {
   "name": "Rails Stripe Sales Tax Sample",
-  "description": "Example Rails 4.2 app with Stripe, Payola, and TaxJar for a subscription site.",
+  "description": "Example Rails 4.2 app with Stripe, Payola, and TaxJar for a subscription membership site.",
   "repository": "https://github.com/taxjar/rails-stripe-sales-tax-sample",
   "logo": "http://www.taxjar.com/img/lander/logo-icon.svg",
   "keywords": ["rails", "stripe", "taxjar", "sales tax"],
@@ -29,5 +29,8 @@
       "description": "TaxJar API Key",
       "value": ""
     }
+  },
+  "scripts": {
+    "postdeploy": "rake db:seed"
   }
 }
