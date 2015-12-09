@@ -1,7 +1,11 @@
-<% content_for :title do %>About<% end %>
-<h3>About the Website</h3>
-<p>
-This web application was created with
-<%= link_to('Rails Composer', 'http://railsapps.github.io/rails-composer/') %>
-from the <%= link_to('RailsApps project', 'http://railsapps.github.io/') %>.
-</p>
+<% content_for :title do %>About - Winebox<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>About Winebox</h1>
+      <p>This example app is based on <a href="https://github.com/RailsApps/rails-stripe-membership-saas">rails-stripe-membership-saas</a> by <a href="http://railsapps.github.io/">RailsApps</a>. Behind the scenes it's built with Rails, <a href="https://github.com/peterkeen/payola">Payola</a> for Stripe payments, and <a href="http://www.taxjar.com">TaxJar</a> for calculating sales tax.</p>
+      <p>For more info, <a href="#">check out the blog post!</a></p><br><br>
+    </div>
+  </div>
+</div>

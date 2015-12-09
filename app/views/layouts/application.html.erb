@@ -2,8 +2,9 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "Rails Stripe Membership" %></title>
-    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Stripe Membership" %>">
+    <title><%= content_for?(:title) ? yield(:title) : "Winebox" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Food & Wine Delivery Service" %>">
+    <link href='https://fonts.googleapis.com/css?family=Alegreya+Sans:400,700' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
@@ -17,5 +18,11 @@
        <%= render 'layouts/messages' %>
        <%= yield %>
     </main>
+    <footer>
+      <div class="text-center">
+        <p class="text-muted"><small>This is an example app. Not a real delivery service.</small></p>
+        <p><small><a href="http://www.taxjar.com/api">Sales Tax for Developers</a></small></p>
+      </div>
+    </footer>
   </body>
 </html>

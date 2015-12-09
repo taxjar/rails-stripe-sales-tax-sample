@@ -13,3 +13,44 @@
  *= require_tree .
  *= require_self
  */
+ 
+body {
+  font-family: 'Alegreya Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+}
+ 
+.navbar {
+  background: rgba(0,0,0,.8);
+  border-top: 2px solid #b42d3f;
+}
+
+#home {
+  color: #fff;
+  text-shadow: 0 1px 1px #000;
+  background: asset-url('wine.jpg') 50% 50% no-repeat;
+  background-size: cover;
+  margin-top: -51px;
+  padding: 60px 0;
+  
+  h1 {
+    font-weight: 600;
+  }
+  
+  .jumbotron, .well {
+    background: none;
+    border: 0;
+  }
+  
+  .plan {
+    background: rgba(255,255,255,.8);
+    
+    h2 {
+      color: #B42D3F;
+      text-shadow: none;
+    }
+  }
+}
+
+footer {
+  padding: 20px 0;
+}

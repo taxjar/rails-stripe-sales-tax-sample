@@ -7,34 +7,43 @@
     <%= link_to 'Download PDF', products_path('product.pdf'), class: 'btn btn-success btn-large' %>
   <% end %>
 <% else %>
-  <div id="welcome" class="span7">
-    <h1>Membership Site</h1>
-    <h3>Learn to build a successful subscription site.</h3>
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="jumbotron text-center">
+          <h1>Winebox</h1>
+          <h2>Amazing Food &amp; Wine Pairings Made Easy</h2>
+          <p>Deliver a box with snacks and wine to your mailbox every month!</p>
+        </div>
+      </div>
+    </div>
+    <div class="row plans">
+      <div class="col-md-4 well">
+        <div class="plan"><h2>Silver</h2></div>
+        <ul class="list-unstyled">
+          <li>2 Snacks and 1 Bottle of Wine</li>
+        </ul>
+        <h3><b>$49</b>/month</h3><br>
+        <%= link_to 'Subscribe Now', new_user_registration_path(plan: 'silver'), :class => 'btn btn-lg btn-primary' %>
+      </div>
+      <div class="col-md-4 well featured">
+        <div class="plan featured-plan"><h2>Gold</h2></div>
+        <ul class="list-unstyled">
+          <li>4 Snacks and 2 Bottles of Wine</li>
+        </ul>
+        <h3><b>$99</b>/month</h3><br>
+        <%= link_to 'Subscribe Now', new_user_registration_path(plan: 'gold'), :class => 'btn btn-lg btn-primary' %>
+      </div>
+      <div class="col-md-4 well">
+        <div class="plan"><h2>Platinum</h2></div>
+        <ul class="list-unstyled">
+          <li>Premium Snacks and 3 Bottles of Wine</li>
+        </ul>
+        <h3><b>$149</b>/month</h3><br>
+        <%= link_to 'Subscribe Now', new_user_registration_path(plan: 'platinum'), :class => 'btn btn-lg btn-primary' %>
+      </div>
+    </div>
   </div>
-  <div class="row col-sm-12 plans">
-    <div class="col-sm-2 well">
-      <div class="plan"><h2>Silver</h2></div>
-      <ul class="list-unstyled">
-        <li>One lesson a month</li>
-      </ul>
-      <h3>$9/month</h3>
-      <%= link_to 'Subscribe', new_user_registration_path(plan: 'silver'), :class => 'btn btn-primary' %>
-    </div>
-    <div class="col-sm-2 well featured">
-      <div class="plan featured-plan"><h2>Gold</h2></div>
-      <ul class="list-unstyled">
-        <li>Ten lessons a month</li>
-      </ul>
-      <h3>$19/month</h3>
-      <%= link_to 'Subscribe', new_user_registration_path(plan: 'gold'), :class => 'btn btn-primary' %>
-    </div>
-    <div class="col-sm-2 well">
-      <div class="plan"><h2>Platinum</h2></div>
-      <ul class="list-unstyled">
-        <li>Thirty lessons a month</li>
-      </ul>
-      <h3>$29/month</h3>
-      <%= link_to 'Subscribe', new_user_registration_path(plan: 'platinum'), :class => 'btn btn-primary' %>
-    </div>
-  </div>
+</div>
 <% end %>
