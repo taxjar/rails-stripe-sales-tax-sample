@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   belongs_to :plan
   validates_associated :plan
+  
+  attr_accessor :first_name, :last_name, :address1, :address2, :city, :state, :zip, :country, :tax_percent
 
   def set_default_role
     self.role ||= :user

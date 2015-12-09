@@ -7,43 +7,133 @@
         'data-payola-base-path' => payola_path,
         'data-payola-plan-type' => resource.plan.plan_class,
         'data-payola-plan-id' => resource.plan.id}) do |f| %>
-    <h3>Sign up</h3>
+    <h3>Sign up for <b><%= @plan.name %></b></h3>
     <div>
       <br />
       <span id="error_explanation" class="payola-payment-error"></span>
       <br />
       <br />
     </div>
-    <div class="form-group">
-      <%= f.label 'Subscription plan' %>
-      <%= f.collection_select(:plan_id, Plan.all, :id, :name) %>
+    <div class="row">
+      <div class="col-md-12">
+        <h4>Login Info</h4><br>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, :autofocus => true, class: 'form-control', data: { payola: 'email' }  %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        </div><br>
+      </div>
     </div>
-    <div class="form-group">
-      <%= f.label :email %>
-      <%= f.email_field :email, :autofocus => true, class: 'form-control', data: { payola: 'email' }  %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= label_tag :card_number, "Credit Card Number" %>
-      <%= text_field_tag :card_number, nil, name: nil, class: 'form-control', data: { stripe: 'number' } %>
-    </div>
-    <div class="form-group">
-      <%= label_tag :card_code, "Card Security Code" %>
-      <%= text_field_tag :card_code, nil, name: nil, class: 'form-control', data: { stripe: 'cvc' } %>
-    </div>
-    <br />
-    <div class="form-group">
-      <%= label_tag :card_month, "Card Expiry" %>
-      <%= select_month nil, { use_two_digit_numbers: true}, { name: nil, data: { stripe: 'exp-month' } } %>
-      <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: { stripe: 'exp-year' } } %>
-    </div>
-    <%= f.submit 'Sign up', :class => 'button right' %>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Shipping Info</h4><br>
+        <div class="form-group hidden">
+          <%= f.label 'Subscription plan' %>
+          <%= f.collection_select(:plan_id, Plan.all, :id, :name) %>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <%= f.label :country %>
+              <%= f.country_select :country, selected: 'US', class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <%= f.label :first_name, "First Name" %>
+              <%= f.text_field :first_name, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <%= f.label :last_name, "Last Name" %>
+              <%= f.text_field :last_name, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :address1, "Address" %>
+          <%= f.text_field :address1, class: 'form-control' %>
+          <%= f.text_field :address2, class: 'form-control', style: 'margin-top: 6px' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :city %>
+          <%= f.text_field :city, class: 'form-control' %>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <%= f.label :state %>
+              <%= f.text_field :state, class: 'form-control' %>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <%= f.label :zip %>
+              <%= f.text_field :zip, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">        
+        <h4>Billing Info <img class="pull-right" src="<%= asset_path('powered-by-stripe.png') %>" alt="Powered by Stripe" width="100"></h4><br>
+        <div class="form-group">
+          <%= label_tag :card_number, "Credit Card Number" %>
+          <%= text_field_tag :card_number, nil, name: nil, class: 'form-control', data: { stripe: 'number' } %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :card_code, "Card Security Code" %>
+          <%= text_field_tag :card_code, nil, name: nil, class: 'form-control', data: { stripe: 'cvc' } %>
+        </div>
+        <br />
+        <div class="form-group">
+          <%= label_tag :card_month, "Card Expiry" %>
+          <%= select_month nil, { use_two_digit_numbers: true}, { name: nil, data: { stripe: 'exp-month' } } %>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, { name: nil, data: { stripe: 'exp-year' } } %>
+        </div>
+        <hr>
+        <div class="form-group">
+          <p>Subtotal: <b><span id="order_subtotal"><%= number_to_currency(@plan.amount / 100) %></span></b></p>
+          <p>Tax: <b><span id="order_tax">$0.00</span></b></p>
+          <p>Order Total: <b><span id="order_total"><%= number_to_currency(@plan.amount / 100) %></span></b></p>
+        </div>
+        <hr>
+        
+        <%= hidden_field_tag :tax_percent %>
+        <%= f.submit 'Subscribe to ' + @plan.name, :class => 'btn btn-lg btn-primary' %><br><br>
+      </div>
+    </div>    
   <% end %>
-</div>
+</div><br>
+
+<script>
+(function($) {
+  $('#user_zip').change(function(e) {
+    var form = $('.payola-onestep-subscription-form');
+
+    $.ajax({
+      url: '<%= tax_calculate_path %>',
+      data: form.find(':input').filter(function(i, el) { return $(el).val() != ''; }).serialize(),
+      dataType: 'json',
+      success: function(res) {
+        if (res.tax_percent) {
+          var total = parseFloat($('#order_subtotal').text().replace(/[^0-9\.]+/g, '')).toFixed(2);
+          var tax = parseFloat(total * (res.tax_percent / 100)).toFixed(2);
+          $('#tax_percent').val(res.tax_percent);
+          $('#order_tax').html('$' + tax);
+          $('#order_total').html('$' + (parseFloat(total) + parseFloat(tax)));
+        }
+      }
+    });
+  });
+})(jQuery);
+</script>

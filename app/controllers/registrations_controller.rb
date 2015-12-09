@@ -4,10 +4,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     build_resource({})
-    unless params[:plan].nil?
-      @plan = Plan.find_by!(stripe_id: params[:plan])
-      resource.plan = @plan
-    end
+    @plan = params[:plan].present? ? Plan.find_by!(stripe_id: params[:plan]) : Plan.find_by!(stripe_id: 'silver')
+    resource.plan = @plan
     yield resource if block_given?
     respond_with self.resource
   end
