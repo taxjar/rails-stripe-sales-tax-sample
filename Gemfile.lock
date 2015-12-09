@@ -169,6 +169,7 @@ GEM
     nokogiri (1.6.7)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
+    pg (0.18.4)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -313,6 +314,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   payola-payments!
+  pg
   quiet_assets
   rails (= 4.2.5)
   rails_layout
