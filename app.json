@@ -31,6 +31,6 @@
     }
   },
   "scripts": {
-    "postdeploy": "rake db:seed"
+    "postdeploy": "rake db:migrate && rake db:seed"
   }
 }
