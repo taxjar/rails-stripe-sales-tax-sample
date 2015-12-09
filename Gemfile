@@ -15,11 +15,13 @@ group :development do
   gem 'spring'
 end
 gem 'bootstrap-sass'
+gem 'country_select'
 gem 'devise'
 gem 'gibbon'
 gem 'high_voltage'
 gem 'payola-payments'
 gem 'sucker_punch'
+gem 'taxjar-ruby', require: 'taxjar'
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
