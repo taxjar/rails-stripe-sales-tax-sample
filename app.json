@@ -5,32 +5,32 @@
   "logo": "http://www.taxjar.com/img/lander/logo-icon.svg",
   "keywords": ["rails", "stripe", "taxjar", "sales tax"],
   "env": {
-    "admin_name": {
+    "ADMIN_NAME": {
       "description": "Your Name",
       "value": ""
     },
-    "admin_email": {
+    "ADMIN_EMAIL": {
       "description": "Your Email Address",
       "value": ""
     },
-    "admin_password": {
+    "ADMIN_PASSWORD": {
       "description": "Admin Password",
       "value": ""
     },
-    "stripe_api_key": {
+    "STRIPE_API_KEY": {
       "description": "Stripe API Key",
       "value": ""
     },
-    "stripe_publishable_key": {
+    "STRIPE_PUBLISHABLE_KEY": {
       "description": "Stripe Publishable Key",
       "value": ""
     },
-    "taxjar_api_key": {
+    "TAXJAR_API_KEY": {
       "description": "TaxJar API Key",
       "value": ""
     }
   },
   "scripts": {
-    "postdeploy": "rake db:migrate && rake db:seed"
+    "postdeploy": "bundle exec rake db:setup"
   }
 }
